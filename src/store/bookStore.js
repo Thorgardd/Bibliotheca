@@ -7,6 +7,7 @@ const bookStore = createStore({
             return el
         }),
         userBookList: [],
+        userBookSearch: {}
     },
     getters: {
         getWebsiteBookList: (state) => {
@@ -14,6 +15,10 @@ const bookStore = createStore({
         },
         getUserBookList: (state) => {
             return state.userBookList;
+        },
+        getBookByName: (state, bookName) => {
+            state.userBookSearch = state.websiteBookList.find(x => x.name === bookName)
+            return console.log(state)
         }
     },
     mutations: {

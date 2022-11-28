@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from "@/views/LoginView";
 import AdminComponent from "@/views/AdminComponent";
-import ReaderSpace from "@/views/ReaderSpace";
+import BookSiteView from "@/views/BookSiteView";
+import UserBooks from "@/views/UserBooks";
 
 const routes = [
   {
@@ -21,9 +22,17 @@ const routes = [
     }
   },
   {
-    path: '/menu',
-    name: 'menu',
-    component: ReaderSpace,
+    path: '/books',
+    name: 'books',
+    component: BookSiteView,
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/books/user',
+    name: 'userbooks',
+    component: UserBooks,
     meta: {
       auth: true
     }

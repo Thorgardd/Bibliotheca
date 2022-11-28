@@ -1,8 +1,7 @@
 <template>
-  <Header></Header>
+  <SearchBar v-model="this.research"></SearchBar>
   <div class="wrapper">
-    <SearchBar></SearchBar>
-    <div v-for="book in this.websiteBookList" class="bookWrapper">
+    <div v-for="book in this.booksFromSite" class="bookWrapper">
       <div class="book">
         <h3>{{ book.name }}</h3>
         <div class="buttons">
@@ -15,27 +14,32 @@
 </template>
 
 <script>
-import Header from "@/components/layouts/Header";
 import bookStore from "@/store/bookStore";
 import SearchBar from "@/components/SearchBar";
 export default {
-  name: "ReaderSpace",
+  name: "BookSiteView",
   components: {
-    Header,
     SearchBar
   },
-  data(){
+  data: () => {
     return{
-      websiteBookList: JSON.parse(JSON.stringify(bookStore.getters.getWebsiteBookList))
+      booksFromSite: bookStore.getters.getWebsiteBookList,
+      research: ""
     }
   },
   methods: {
-    AddBook: (book) => {
-      bookStore.commit("AddBookToUserBookList", book);
+    AddBook: () => {
+
     },
-    DeleteBook: (book) => {
-      bookStore.commit("RemoveBookFromUserBookList", book);
+    DeleteBook: () => {
+
+    },
+    SearchBook: () => {
+
     }
+  },
+  mounted() {
+    console.log(JSON.parse(JSON.stringify(this.booksFromSite)))
   }
 }
 </script>
