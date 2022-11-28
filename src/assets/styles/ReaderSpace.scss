@@ -1,0 +1,55 @@
+.wrapper{
+  display: flex;
+  width: 100%;
+  min-height: 90vh;
+  flex-direction: row;
+}
+
+.bookWrapper{
+  display: flex;
+  width: 80%;
+  height: 150px;
+}
+
+.book{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 70%;
+  width: 90%;
+  padding: 10px;
+}
+
+.buttons{
+  display: flex;
+  width: 80%;
+  height: 100%;
+  align-items: center;
+  gap: 20px;
+}
+
+#add{
+  background-color: green;
+  color: white;
+}
+
+#remove{
+  background-color: darkred;
+  color: white;
+}
+
+#add{
+  &:hover{
+    transition: all 0.2s ease-out;
+    transform: scale(1.05);
+  }
+}
+
+#remove{
+  &:hover{
+    transition: all 0.2s ease-out;
+    transform: scale(1.05);
+  }
+}
