@@ -1,6 +1,7 @@
 <template>
   <Header></Header>
   <div class="wrapper">
+    <SearchBar></SearchBar>
     <div v-for="book in this.websiteBookList" class="bookWrapper">
       <div class="book">
         <h3>{{ book.name }}</h3>
@@ -15,12 +16,13 @@
 
 <script>
 import Header from "@/components/layouts/Header";
-import {books} from "@/data/books";
 import bookStore from "@/store/bookStore";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: "ReaderSpace",
   components: {
-    Header
+    Header,
+    SearchBar
   },
   data(){
     return{
