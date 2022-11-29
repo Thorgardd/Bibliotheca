@@ -3,9 +3,7 @@ import {books} from "@/data/books";
 
 const bookStore = createStore({
     state: {
-        websiteBookList: books.map((el) => {
-            return el
-        }),
+        websiteBookList: books,
         userBookList: [],
         userBookSearch: {}
     },

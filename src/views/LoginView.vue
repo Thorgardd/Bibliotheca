@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
   <div class="wrapper">
     <h1 id="title">Connexion à votre bibliothèque personnelle</h1>
     <div class="form">

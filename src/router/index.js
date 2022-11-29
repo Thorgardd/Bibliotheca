@@ -3,10 +3,19 @@ import LoginView from "@/views/LoginView";
 import AdminComponent from "@/views/AdminComponent";
 import BookSiteView from "@/views/BookSiteView";
 import UserBooks from "@/views/UserBooks";
+import HomeView from "@/views/HomeView";
 
 const routes = [
   {
     path: '/',
+    name: 'home',
+    component: HomeView,
+    meta: {
+      auth: false
+    }
+  },
+  {
+    path: '/login',
     name: 'login',
     component: LoginView,
     meta: {
@@ -26,7 +35,7 @@ const routes = [
     name: 'books',
     component: BookSiteView,
     meta: {
-      auth: true
+      auth: false
     }
   },
   {
@@ -36,6 +45,10 @@ const routes = [
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: "/"
   }
 ]
 

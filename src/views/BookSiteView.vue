@@ -1,6 +1,7 @@
 <template>
   <SearchBar v-model="this.research"></SearchBar>
   <div class="wrapper">
+    <h2>Livres a disposition sur le site</h2>
     <div v-for="book in this.booksFromSite" class="bookWrapper">
       <div class="book">
         <h3>{{ book.name }}</h3>
@@ -14,8 +15,10 @@
 </template>
 
 <script>
-import bookStore from "@/store/bookStore";
 import SearchBar from "@/components/SearchBar";
+import {books} from "@/data/books";
+import bookStore from "@/store/bookStore";
+import {JsonParser} from "@/Utils";
 export default {
   name: "BookSiteView",
   components: {
@@ -23,26 +26,26 @@ export default {
   },
   data: () => {
     return{
-      booksFromSite: bookStore.getters.getWebsiteBookList,
+      booksFromSite: bookStore.state.websiteBookList,
+      userBookList: bookStore.state.userBookList,
       research: ""
     }
   },
   methods: {
-    AddBook: () => {
-
+    AddBook: function (book){
+      JsonParser(this.userBookList.push(JsonParser(book)));
+      console.log(JsonParser(this.userBookList));
     },
-    DeleteBook: () => {
-
+    DeleteBook: function (book) {
+      let bookSelected = this.userBookList.find(y => y.id === book.id);
+      if (bookSelected === undefined) return;
+      this.userBookList.splice(this.userBookList.indexOf(bookSelected), 1);
     },
-    SearchBook: () => {
-
+    SearchBook: function () {
+      // TODO - IMPLEMENT FUNCTION SEARCHBOOK
     }
-  },
-  mounted() {
-    console.log(JSON.parse(JSON.stringify(this.booksFromSite)))
   }
 }
 </script>
 
-<style lang="scss" src="../assets/styles/ReaderSpace.scss" scoped>
-</style>
+<style lang="scss" src="../assets/styles/BookSiteView.scss" scoped/>
